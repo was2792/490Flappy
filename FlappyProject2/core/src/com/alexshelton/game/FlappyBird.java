@@ -5,7 +5,7 @@ import com.alexshelton.game.States.MenuState;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -13,6 +13,7 @@ public class FlappyBird extends Game {
 
 	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
+
 
 	public static final String TITLE = "Flappy";
 
@@ -22,7 +23,10 @@ public class FlappyBird extends Game {
 
 	private Music music;
 
-	private BitmapFont font;
+	public BitmapFont font;
+
+
+
 
 
 
@@ -37,8 +41,6 @@ public class FlappyBird extends Game {
 		music.setVolume(0.1f);
 		music.play();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
-		font = new BitmapFont();
-		font.setColor(Color.RED);
 
 
 
@@ -47,6 +49,8 @@ public class FlappyBird extends Game {
 	@Override
 	public void render () {
 
+		Gdx.gl.glClearColor(1,1,1,1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gsm.update(Gdx.graphics.getDeltaTime());
 		gsm.render(batch);
 
@@ -58,5 +62,6 @@ public class FlappyBird extends Game {
 	public void dispose() {
 		super.dispose();
 		music.dispose();
+		font.dispose();
 	}
 }

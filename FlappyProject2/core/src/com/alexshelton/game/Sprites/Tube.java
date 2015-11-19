@@ -26,11 +26,13 @@ public class Tube {
         bottomTube = new Texture("bottomtube.png");
         rand = new Random();
 
-        posTopTube = new Vector2(x, rand.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
+        posTopTube = new Vector2(x, rand.nextInt(130) + TUBE_GAP + LOWEST_OPENING);
         posBotTube = new Vector2(x, posTopTube.y - TUBE_GAP - bottomTube.getHeight());
+
 
         boundsTop = new Rectangle(posTopTube.x, posTopTube.y, topTube.getWidth(), topTube.getHeight());
         boundsBot = new Rectangle(posBotTube.x, posBotTube.y, bottomTube.getWidth(), bottomTube.getHeight());
+
 
     }
 
@@ -65,6 +67,8 @@ public class Tube {
 
 
     }
+
+
 
     public void dispose(){
         topTube.dispose();

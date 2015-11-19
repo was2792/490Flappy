@@ -2,7 +2,9 @@ package com.alexshelton.game.States;
 
 import com.alexshelton.game.FlappyBird;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -20,6 +22,9 @@ public class GameOver extends State {
     Texture gameover;
     private Vector2 groundPos1, groundPos2;
 
+
+
+
     public GameOver(GameStateManager gsm) {
         super(gsm);
         background = new Texture("bg.png");
@@ -28,6 +33,7 @@ public class GameOver extends State {
         groundPos1 = new Vector2(cam.position.x - cam.viewportWidth / 2, GROUND_Y_OFFSET);
         ground = new Texture("ground.png");
         groundPos2 = new Vector2((cam.position.x - cam.viewportWidth / 2) + ground.getWidth(),GROUND_Y_OFFSET);
+        font = new BitmapFont();
 
 
     }
@@ -54,12 +60,21 @@ public class GameOver extends State {
         sb.begin();
 
 
+
         sb.draw(background, cam.position.x - (cam.viewportWidth / 2), 0);
         sb.draw(gameover, groundPos1.x + 27, groundPos1.y + 235);
         sb.draw(ground, groundPos1.x, groundPos1.y);
         sb.draw(ground, groundPos2.x, groundPos2.y);
 
         sb.end();
+
+        sb.begin();
+        font.setColor(Color.WHITE);
+        font.draw(sb, String.format("%.0f",score), 120, 120);
+
+        sb.end();
+
+
 
     }
 
