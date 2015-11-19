@@ -13,8 +13,8 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class GameOver extends State {
 
-    private static final int TUBE_SPACING = 125;
-    private static final int TUBE_COUNT = 4;
+    //private static final int TUBE_SPACING = 125;
+    //private static final int TUBE_COUNT = 4;
     private static final int GROUND_Y_OFFSET = -50;
 
     Texture ground;
@@ -22,18 +22,23 @@ public class GameOver extends State {
     Texture gameover;
     private Vector2 groundPos1, groundPos2;
 
-
+    //adding these doesn't do shit
+    //public float score;
+    //public float finalScore;
 
 
     public GameOver(GameStateManager gsm) {
         super(gsm);
-        background = new Texture("bg.png");
+        background = new Texture("downtown.jpg");
         gameover = new Texture("gameover.png");
         cam.setToOrtho(false, FlappyBird.WIDTH / 2 , FlappyBird.HEIGHT /2 );
         groundPos1 = new Vector2(cam.position.x - cam.viewportWidth / 2, GROUND_Y_OFFSET);
         ground = new Texture("ground.png");
         groundPos2 = new Vector2((cam.position.x - cam.viewportWidth / 2) + ground.getWidth(),GROUND_Y_OFFSET);
         font = new BitmapFont();
+
+        //doesn't score or finalScore need to be put into this?
+        //score = new PlayState("score");
 
 
     }
@@ -57,9 +62,9 @@ public class GameOver extends State {
     public void render(SpriteBatch sb) {
 
         sb.setProjectionMatrix(cam.combined);
+
+        //formatting for the gameover png display on the screen
         sb.begin();
-
-
 
         sb.draw(background, cam.position.x - (cam.viewportWidth / 2), 0);
         sb.draw(gameover, groundPos1.x + 27, groundPos1.y + 235);
@@ -68,9 +73,14 @@ public class GameOver extends State {
 
         sb.end();
 
+        //code to show the score from the PlayState as finalScore/score
+        //it isn't grabbing the values from anything anywhere
         sb.begin();
         font.setColor(Color.WHITE);
-        font.draw(sb, String.format("%.0f",score), 120, 120);
+        font.draw(sb, String.format("%.0f", finalScore), 120, 120);
+
+        //test line to see if it will grab score
+        font.draw(sb, String.format("%.0f", score), 140, 140);
 
         sb.end();
 

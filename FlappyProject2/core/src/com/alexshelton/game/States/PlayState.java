@@ -32,6 +32,10 @@ public class PlayState extends State {
 
     private Array<Tube> tubes;
 
+    //test declaration
+    //public float score;
+    //public float finalScore;
+    //test declaration
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -43,15 +47,6 @@ public class PlayState extends State {
         groundPos2 = new Vector2((cam.position.x - cam.viewportWidth / 2) + ground.getWidth(),GROUND_Y_OFFSET);
 
         font = new BitmapFont();
-
-
-
-
-
-
-
-
-
 
         tubes = new Array<Tube>();
 
@@ -77,6 +72,7 @@ public class PlayState extends State {
 
         if(bird.getBounds().x >= 156)
             score = (bird.getBounds().x / 176) - 0.6f ;
+            finalScore = score;
 
 
         for(int i = 0; i < tubes.size; i++){
@@ -86,11 +82,6 @@ public class PlayState extends State {
             if(cam.position.x - cam.viewportWidth / 2 > tube.getPosTopTube().x + tube.getTopTube().getWidth()){
                 tube.reposition(tube.getPosTopTube().x + ((Tube.TUBE_WIDTH + TUBE_SPACING) * TUBE_COUNT));
             }
-
-            
-
-
-
 
             if(tube.collides(bird.getBounds()))
 
@@ -115,14 +106,8 @@ public class PlayState extends State {
 
 
         sb.setProjectionMatrix(cam.combined);
+
         sb.begin();
-
-
-
-
-
-
-
 
         sb.draw(bg, cam.position.x - (cam.viewportWidth / 2), 0);
         sb.draw(bird.getTexture(), bird.getPosition().x, bird.getPosition().y);
@@ -135,19 +120,20 @@ public class PlayState extends State {
         sb.draw(ground, groundPos1.x, groundPos1.y);
         sb.draw(ground, groundPos2.x, groundPos2.y);
 
-
         sb.end();
+
 
         sb.begin();
 
         font.setColor(Color.WHITE);
         font.draw(sb, String.format("%.0f", score) ,testx,y);
         finalScore = score;
+
+        //floods the dev log with a ton of floats
         Gdx.app.log("testing",Float.toString(finalScore));
+        Gdx.app.log("testing",Float.toString(score));
 
         sb.end();
-
-
 
     }
 
