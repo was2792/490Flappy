@@ -10,8 +10,8 @@ import com.badlogic.gdx.math.Vector2;
  * Created by Alex on 11/14/2015.
  */
 public class MenuState extends State {
-    private static final int TUBE_SPACING = 125;
-    private static final int TUBE_COUNT = 4;
+    //private static final int TUBE_SPACING = 125;
+    //private static final int TUBE_COUNT = 4;
     private static final int GROUND_Y_OFFSET = -50;
 
     Texture ground;

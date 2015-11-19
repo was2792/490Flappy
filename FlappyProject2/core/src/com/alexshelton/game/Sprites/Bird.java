@@ -17,7 +17,7 @@ public class Bird {
 
     private Rectangle bounds;
     private Animation birdAnimation;
-    private Texture bird;
+    //private Texture bird;
     private Texture texture;
 
     public Bird(int x, int y){
