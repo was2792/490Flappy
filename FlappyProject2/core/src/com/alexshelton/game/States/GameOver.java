@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-
 /**
  * Created by Alex on 11/14/2015.
  */
@@ -21,6 +20,9 @@ public class GameOver extends State {
     Texture background;
     Texture gameover;
     private Vector2 groundPos1, groundPos2;
+
+    //ParseUtil is used here to send the high score to Parse.com
+    ParseUtil parseUtil = new ParseUtil();
 
     //adding these doesn't do shit
     //public float score;
